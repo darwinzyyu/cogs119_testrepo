@@ -23,16 +23,20 @@
 
   /* create timeline */
   var timeline = [];
+
+  /**
+   * enable fullscreen
+   */
   timeline.push({
     type: jsPsychFullscreen,
     fullscreen_mode: true
   });
+
   //Create a random ID for the participant
   var participant_id = jsPsych.randomization.randomID();
   jsPsych.data.addProperties({
     participant: participant_id
   });
-
   console.log("Generated Participant ID:", participant_id);
 
   // define welcome message trial
@@ -211,6 +215,10 @@
     stimulus: "the experiment has ended, press any key to exit. Goodbye!"
   };
   timeline.push(end_experiment);
+
+  /**
+   * Disable full screen 
+   */
   timeline.push({
     type: jsPsychFullscreen,
     fullscreen_mode: false
