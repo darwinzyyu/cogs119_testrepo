@@ -203,6 +203,12 @@
     timeline.push(repeat_trial);
   }
 
+  var end_experiment = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: "the experiment has ended, press any key to exit. Goodbye!"
+  };
+  timeline.push(end_experiment);
+
   /* start the experiment */
   jsPsych.run(timeline);
 
