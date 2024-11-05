@@ -7,6 +7,7 @@
   <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.2.1"></script>
   <link href="https://unpkg.com/jspsych@8.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -22,7 +23,10 @@
 
   /* create timeline */
   var timeline = [];
-
+  timeline.push({
+    type: jsPsychFullscreen,
+    fullscreen_mode: true
+  });
   //Create a random ID for the participant
   var participant_id = jsPsych.randomization.randomID();
   jsPsych.data.addProperties({
@@ -207,6 +211,10 @@
     stimulus: "the experiment has ended, press any key to exit. Goodbye!"
   };
   timeline.push(end_experiment);
+  timeline.push({
+    type: jsPsychFullscreen,
+    fullscreen_mode: false
+  });
 
   /* start the experiment */
   jsPsych.run(timeline);
