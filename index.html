@@ -24,25 +24,17 @@
   var timeline = [];
 
   //Create a random ID for the participant
-  var participant_id = {
-    type: jsPsychSurveyText,
-    on_start: function () {
-      var randomId = jsPsych.randomization.randID();
-      jsPsych.data.addProperties({
-        participant: randomId
-      });
-    },
-    on_finish: function (data) {
-      console.log(data.response);
-    }
-  };
+  var participant_id = jsPsych.randomization.randID();
+  jsPsych.data.addProperties({
+    participant: participant_id
+  });
 
-  timeline.push(participant_id);
+  console.log("Generated Participant ID:", participant_id);
 
   // define welcome message trial
   var welcome = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "Welcome to the experiment. Press any key to begin."
+    stimulus: "Welcome to the experiment. Press any key to continue."
   };
 
   // add the welcome trial to the timeline variable
@@ -125,7 +117,8 @@
   console.log(test_list_shuffled)
 
   //cycle through memory list using a for loop
-  for (i = 0; i < memory_list_shuffled.length; i++) {
+  //  for (i = 0; i < memory_list_shuffled.length; i++) {
+  for (i = 0; i < 20; i++) {
 
     //select the current image item
     var current_image = memory_list_shuffled[i];
