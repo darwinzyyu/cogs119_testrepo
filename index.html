@@ -23,6 +23,45 @@
   /* create timeline */
   var timeline = [];
 
+  //Create a random ID for the participant
+  var participant_id = {
+    type: jsPsychSurveyText,
+    on_start: function () {
+      var randomId = jsPsych.randomization.randID();
+      jsPsych.data.addProperties({
+        participant: randomId
+      });
+    },
+    on_finish: function (data) {
+      console.log(data.response);
+    }
+  };
+
+  timeline.push(participant_id);
+
+  // define welcome message trial
+  var welcome = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: "Welcome to the experiment. Press any key to begin."
+  };
+
+  // add the welcome trial to the timeline variable
+  timeline.push(welcome);
+
+  // Tell the participants how the experiment will work
+  var instructions = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `
+  <p>You will be shown X images in a series</p>
+  <p>After you see all the images, you will be shown pairs of images.</p>
+  <p>Select the image you think you saw during the intial stream of images</p>
+  <p>Press any key to begin.</p>
+  `
+  };
+
+  //add the instructions trial to the timeline
+  timeline.push(instructions);
+
   /* create memory list */
   // create a list of all items to be tested during the memory procedure
   // TO DO: how can we expand this list to encompass all items?
@@ -125,14 +164,14 @@
   for (i = 0; i < test_list_shuffled.length; i++) {
     //select the current item
     var current_item = test_list_shuffled[i];
-    var image_1 = current_item["path_to_image"]+current_item["item_1"];
-    var image_2 = current_item["path_to_image"]+current_item["item_2"];
+    var image_1 = current_item["path_to_image"] + current_item["item_1"];
+    var image_2 = current_item["path_to_image"] + current_item["item_2"];
 
     //TO DO: how can we randomize image positions? How can we ensure that the old/new items are correctly marked?
     var test_trial = {
       type: jsPsychHtmlButtonResponse,
       stimulus: "Which of these items did you see before?",
-      choices: ['<img src="'+image_1+'">', '<img src="'+image_2+'">'],
+      choices: ['<img src="' + image_1 + '">', '<img src="' + image_2 + '">'],
       data: {
         trial_phase: "test"
       }
