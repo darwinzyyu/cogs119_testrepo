@@ -117,8 +117,7 @@
   console.log(test_list_shuffled)
 
   //cycle through memory list using a for loop
-  //  for (i = 0; i < memory_list_shuffled.length; i++) {
-  for (i = 0; i < 20; i++) {
+  for (i = 0; i < memory_list_shuffled.length; i++) {
 
     //select the current image item
     var current_image = memory_list_shuffled[i];
@@ -154,23 +153,54 @@
   }
 
   //cycle through test list using a for loop
-  for (i = 0; i < test_list_shuffled.length; i++) {
-    //select the current item
+  // Cycle through test list using a for loop
+  for (let i = 0; i < test_list_shuffled.length; i++) {
     var current_item = test_list_shuffled[i];
     var image_1 = current_item["path_to_image"] + current_item["item_1"];
     var image_2 = current_item["path_to_image"] + current_item["item_2"];
+    var shuffledImages = jsPsych.randomization.shuffle([image_1, image_2]);
 
-    //TO DO: how can we randomize image positions? How can we ensure that the old/new items are correctly marked?
+    // Test trial with shuffled images and data tracking for feedback
     var test_trial = {
       type: jsPsychHtmlButtonResponse,
       stimulus: "Which of these items did you see before?",
-      choices: ['<img src="' + image_1 + '">', '<img src="' + image_2 + '">'],
+      choices: [
+        `<img src="${shuffledImages[0]}" style="width:200px;height:200px;">`,
+        `<img src="${shuffledImages[1]}" style="width:200px;height:200px;">`
+      ],
       data: {
-        trial_phase: "test"
+        choice_images: shuffledImages,
+        correct_image: image_1  // Assuming image_1 is always the correct "old" item
+      },
+      on_finish: function (data) {
+        data.choice = data.choice_images[data.response];
+        data.correct = data.choice === data.correct_image;
       }
     };
-    timeline.push(test_trial);
 
+    // Feedback trial
+    var feedback = {
+      type: jsPsychHtmlKeyboardResponse,
+      trial_duration: 1000,
+      stimulus: function () {
+        var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
+        return last_trial_correct ? "<p>Correct!</p>" : "<p>Incorrect. Let's try again.</p>";
+      },
+      post_trial_gap: 500,
+      response_ends_trial: false
+    };
+
+    // Repeat trial until correct
+    var repeat_trial = {
+      timeline: [test_trial, feedback],
+      loop_function: function () {
+        var last_trial_correct = jsPsych.data.get().last(2).values()[0].correct;
+        return !last_trial_correct;  // Repeat only if incorrect
+      }
+    };
+
+    // Push only the repeat_trial to the timeline
+    timeline.push(repeat_trial);
   }
 
   /* start the experiment */
