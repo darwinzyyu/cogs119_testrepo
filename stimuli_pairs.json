@@ -1,0 +1,752 @@
+[
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Eturtle1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Eturtle2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Epotatochips1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Epotatochips2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Erazor1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Erazor2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eskull1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eskull2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Etrophy1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Etrophy2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Emicroscope1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Emicroscope2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Esuitcase1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Esuitcase2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eanchor1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eanchor2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Emuffler1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Emuffler2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Etractor1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Etractor2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Enozzle1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Enozzle2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eholepunch1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eholepunch2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Estapler1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Estapler2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Eicecream1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Eicecream2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Efeather1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Efeather2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Echocolatebar1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Echocolatebar2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Edinosaur1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Edinosaur2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Epizza1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Epizza2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Elighter1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Elighter2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Estring1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Estring2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Ebracelet1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Ebracelet2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Etractor1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Etractor2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Etoyhand1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Etoyhand2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Echisel1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Echisel2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Esoccerball1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Esoccerball2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Ebrick1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Ebrick2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Ebasket1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Ebasket2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Esunglasses1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Esunglasses2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Espraybottle1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Espraybottle2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eicecream1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eicecream2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Earch1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Earch2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Enozzle1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Enozzle2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eship1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eship2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Efishbowl1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Efishbowl2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Ekey1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Ekey2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Esunglasses1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Esunglasses2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Epliers1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Epliers2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Espraybottle1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Espraybottle2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eelectricbass1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eelectricbass2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Epiano1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Epiano2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eballoon1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eballoon2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Ebread1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Ebread2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eframe1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Eframe2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Emoney1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Emoney2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/USED/Ecamera1.jpg",
+    "image2": "Stimuli/EXEMPLAR/USED/Ecamera2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Efolder1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Efolder2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Ebarrel1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Ebarrel2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Etube1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Etube2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Epliers1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Epliers2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Echopsticks1.jpg",
+    "image2": "Stimuli/EXEMPLAR/UNUSED-the rest of them/Echopsticks2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sdresser1.jpg",
+    "image2": "Stimuli/STATE/USED/Sdresser2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sbreadslice1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sbreadslice2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Strashcan1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Strashcan2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Speppers1.jpg",
+    "image2": "Stimuli/STATE/USED/Speppers2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Ssweater1.jpg",
+    "image2": "Stimuli/STATE/USED/Ssweater2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sbrie1.JPG",
+    "image2": "Stimuli/STATE/UNUSED/Sbrie2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Shandshake1.JPG",
+    "image2": "Stimuli/STATE/UNUSED/Shandshake2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Seggplant1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Seggplant2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Spie1.JPG",
+    "image2": "Stimuli/STATE/USED/Spie2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sboxwhite1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sboxwhite2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Shandsign1.JPG",
+    "image2": "Stimuli/STATE/UNUSED/Shandsign2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sumbrella1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sumbrella2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Stomato1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Stomato2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sflask1.jpg",
+    "image2": "Stimuli/STATE/USED/Sflask2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sapple1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sapple2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sbrushes1.jpg",
+    "image2": "Stimuli/STATE/USED/Sbrushes2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sbarnmailbox1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sbarnmailbox2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sdishes1.JPG",
+    "image2": "Stimuli/STATE/USED/Sdishes2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Scooker1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Scooker2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sphone1.JPG",
+    "image2": "Stimuli/STATE/USED/Sphone2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Syarn1.jpg",
+    "image2": "Stimuli/STATE/USED/Syarn2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Scontainer1.JPG",
+    "image2": "Stimuli/STATE/USED/Scontainer2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Swaffleiron1.jpg",
+    "image2": "Stimuli/STATE/USED/Swaffleiron2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sdishwasher1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sdishwasher2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sbreadbox1.JPG",
+    "image2": "Stimuli/STATE/USED/Sbreadbox2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Spestle1.jpg",
+    "image2": "Stimuli/STATE/USED/Spestle2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Smug1.jpg",
+    "image2": "Stimuli/STATE/USED/Smug2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Smedicaltape1.jpg",
+    "image2": "Stimuli/STATE/USED/Smedicaltape2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sdiapers1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sdiapers2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sabacus1.jpg",
+    "image2": "Stimuli/STATE/USED/Sabacus2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sfiretrucktoy1.jpg",
+    "image2": "Stimuli/STATE/USED/Sfiretrucktoy2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sskull1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sskull2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Smetronome1.jpg",
+    "image2": "Stimuli/STATE/USED/Smetronome2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Saccordion1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Saccordion2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sbox1.jpg",
+    "image2": "Stimuli/STATE/USED/Sbox2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sscanner1.JPG",
+    "image2": "Stimuli/STATE/USED/Sscanner2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sscissors1.JPG",
+    "image2": "Stimuli/STATE/USED/Sscissors2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Steacup1.jpg",
+    "image2": "Stimuli/STATE/USED/Steacup2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Srainbowslice1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Srainbowslice2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sdryer1.jpg",
+    "image2": "Stimuli/STATE/USED/Sdryer2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sstoplight1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sstoplight2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Spiggybank1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Spiggybank2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sbriefcasemetal1.JPG",
+    "image2": "Stimuli/STATE/UNUSED/Sbriefcasemetal2.JPG"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Spumpkinpie1.jpg",
+    "image2": "Stimuli/STATE/USED/Spumpkinpie2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sbelt1.jpg",
+    "image2": "Stimuli/STATE/USED/Sbelt2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sgame1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sgame2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sredcabbage1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sredcabbage2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sbulletshell1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sbulletshell2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/USED/Sseats1.jpg",
+    "image2": "Stimuli/STATE/USED/Sseats2.jpg"
+  },
+  {
+    "condition": "STATE",
+    "image1": "Stimuli/STATE/UNUSED/Sshortbread1.jpg",
+    "image2": "Stimuli/STATE/UNUSED/Sshortbread2.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n13ablueberries.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n13ablueberries.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n48afrenchfries.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n48blighter.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n14acigarette.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n14bgolfball.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n38acomputer.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n38bearth.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n36aeggs.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n36bcrib.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n22aknife.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n22bmixer.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n46acushion.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n46bfaucet.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n10awindmill.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n10bturkey.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n06acane.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n06blipstick.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n55acat.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n55bpencil.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n31ahourglass.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n31bcamera.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n41afunnel.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n41bhotdog.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n18apretzel.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n18bsnail.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n07apotato.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n07bswimmingpool.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n59abowl.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n59abowl.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n21aruler.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n21bigloo.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n12atelescope.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n12bwatch.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n11abatteries.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n11abatteries.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n50alobster.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n50alobster.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n27alaundrybasket.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n27alaundrybasket.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n17avendingmachine.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n17bweddingdress.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n56aspoon.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n56bcanteloupe.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n43afloppydisk.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n43bdresser.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n40aflashlight.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n40bgiraffe.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n33aclothespin.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n33bpaintbrush.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n02aaxe.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n02bsafetypin.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n60azebra.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n60azebra.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n25asewingmachine.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n25blegos.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n05abarrel.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n05abarrel.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n15aspiderweb.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n15aspiderweb.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n39aring.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n39bdoorknob.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n57abed.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n57abed.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n35asnowflake.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n35bcanoe.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n03acamel.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n03bbagel.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n01aladybug.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n01aladybug.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n52alightbulb.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n52alightbulb.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n37acherry.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n37bbulldozer.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n09apenguin.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n09bsaddle.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n24aswan.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n24bfireextinguisher.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n49ahorse.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n49bhydrant.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n32abroom.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n32abroom.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n16abananas.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n16abananas.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n45aflowerpot.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n45bcuttingboard.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n34askateboard.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n34askateboard.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n23alawnmower.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n23bhammock.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n28alock.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n28bolive.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n29alighthouse.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n29bharmonica.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n47ablender.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n47ablender.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n53acoffeepot.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n53bbat.jpg"
+  },
+  {
+    "condition": "NOVEL",
+    "image1": "Stimuli/Novel pairs (tested)/n54abaseballcap.jpg",
+    "image2": "Stimuli/Novel pairs (tested)/n54abaseballcap.jpg"
+  }
+]
