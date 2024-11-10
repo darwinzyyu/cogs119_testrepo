@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My experiment</title>
+  <script src="https://unpkg.com/jspsych@8.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script>
+  <link href="https://unpkg.com/jspsych@8.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body></body>
+<script>
+  var jsPsych = initJsPsych({
+    on_finish: function () {
+      jsPsych.data.displayData();
+    }
+  });
+
+  var timeline = [];
+
+  timeline.push({
+    type: jsPsychFullscreen,
+    fullscreen_mode: true
+  });
+
+  var welcome = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: "Welcome to the experiment. Press any key to continue."
+  };
+  timeline.push(welcome);
+
+  var instructions = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `
+      <p>You will be shown a series of images.</p>
+      <p>After viewing them, you will be asked to identify images you saw from pairs shown to you.</p>
+      <p>Press any key to begin.</p>
+    `
+  };
+  timeline.push(instructions);
+
+  // Fetch the JSON data from stimuli_pairs.json
+  fetch('./stimuli_pairs.json')
+    .then(response => response.json())
+    .then(data => {
+      var memory_list = data.filter(item => item.condition !== "novel").map(item => item.image1);
+      var memory_list_shuffled = jsPsych.randomization.shuffle(memory_list);
+
+      memory_list_shuffled.forEach(function (current_image) {
+        timeline.push({
+          type: jsPsychHtmlKeyboardResponse,
+          stimulus: '<div style="font-size:60px;">+</div>',
+          choices: "NO_KEYS",
+          trial_duration: 1000
+        });
+
+        timeline.push({
+          type: jsPsychImageKeyboardResponse,
+          stimulus: current_image,
+          choices: [" "],
+          trial_duration: 3000,
+          response_ends_trial: false,
+          data: { trial_phase: "memory" }
+        });
+      });
+
+      var test_list = data.filter(item => item.condition !== "novel");
+      var test_list_shuffled = jsPsych.randomization.shuffle(test_list);
+
+      test_list_shuffled.forEach(function (current_item) {
+        var shuffledImages = jsPsych.randomization.shuffle([current_item.image1, current_item.image2]);
+
+        timeline.push({
+          type: jsPsychHtmlButtonResponse,
+          stimulus: "Which of these items did you see before?",
+          choices: [
+            `<img src="${shuffledImages[0]}" style="width:200px;height:200px;">`,
+            `<img src="${shuffledImages[1]}" style="width:200px;height:200px;">`
+          ],
+          data: {
+            choice_images: shuffledImages,
+            correct_image: current_item.image1
+          },
+          on_finish: function (data) {
+            data.choice = data.choice_images[data.response];
+            data.correct = data.choice === data.correct_image;
+          }
+        });
+      });
+
+      timeline.push({
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: "The experiment has ended, press any key to exit. Goodbye!"
+      });
+
+      jsPsych.run(timeline);
+    })
+    .catch(error => console.error('Error fetching JSON data:', error));
+</script>
+</html>
