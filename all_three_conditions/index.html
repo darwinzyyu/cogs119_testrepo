@@ -76,8 +76,8 @@
   fetch(gist_url)
     .then(response => response.json())
     .then(data => {
-      // Define experimental conditions: 'exemplar', and 'state'
-      const conditions = ['exemplar', 'state'];
+      // Define experimental conditions: 'novel', 'exemplar', and 'state'
+      const conditions = ['novel', 'exemplar', 'state'];
 
       // Extract all image paths from data for preloading
       let image_list = [];
