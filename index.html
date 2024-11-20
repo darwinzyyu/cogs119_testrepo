@@ -8,6 +8,7 @@
   <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.2.1"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.0.0"></script>
   <link href="https://unpkg.com/jspsych@8.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -185,7 +186,6 @@
       }
     };
 
-    // Feedback trial
     var feedback = {
       type: jsPsychHtmlKeyboardResponse,
       trial_duration: 1000,
@@ -210,11 +210,36 @@
     timeline.push(repeat_trial);
   }
 
+  // Post-experiment survey for participant confidence and feedback
+  var post_experiment_survey = {
+    type: jsPsychSurveyText,
+    questions: [
+      {
+        prompt: "How confident are you in your overall performance during the experiment? (e.g., very confident, somewhat confident, not confident)",
+        placeholder: "Type your confidence level here...",
+        rows: 3,
+        columns: 50
+      },
+      {
+        prompt: "What details did you use to distinguish the items you saw before from the new items? Please describe.",
+        placeholder: "Type your response here...",
+        rows: 5,
+        columns: 50
+      }
+    ],
+    preamble: "<h3>Post-Experiment Survey</h3><p>Please answer the following questions about your experience during the experiment.</p>",
+    button_label: "Submit"
+  };
+
+  // Add the survey to the timeline
+  timeline.push(post_experiment_survey);
+
   var end_experiment = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: "the experiment has ended, press any key to exit. Goodbye!"
   };
   timeline.push(end_experiment);
+
 
   /**
    * Disable full screen 
