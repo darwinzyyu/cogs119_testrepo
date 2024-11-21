@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Massive Memory Experiment</title>
+  <script src="https://unpkg.com/jspsych@8.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-image-slider-response@2.0.0"></script>
+  <link href="https://unpkg.com/jspsych@8.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body></body>
+<script>
+// Initialize jsPsych - setting up experiment global settings
+var jsPsych = initJsPsych({
+    on_finish: function () {
+      // Making sure experiment properly terminates (fullscreen exit and notifying participants)
+      if (document.fullscreenElement) {
+        document.exitFullscreen().then(() => {
+          alert("Thank you for participating. The experiment has ended.");
+          window.close(); // closing browser window
+        }).catch(() => {
+          alert("Thank you for participating. Please close this window manually.");
+        });
+      } else {
+        alert("Thank you for participating. Please close this window manually.");
+      }
+    }
+  });
+
+  // Defining experiment timeline (sequential list of tasks and trials)
+  var timeline = [];
+
+  function generateNBackSequence(
+      imagePool, 
+      totalImages, 
+      repeatImages, 
+      nBack
+        ) {
+      // Validate inputs
+      if (totalImages > imagePool.length * 2) {
+        throw new Error(`Not enough images. Requested ${totalImages}, but only ${imagePool.length * 2} available.`);
+      }
+
+      // Create base sequence of unique images
+      const experimentSequence = imagePool
+        .slice(0, totalImages - repeatImages)
+        .map(item => item);
+
+      // Select images to be repeated
+      const repeatCandidates = jsPsych.randomization.sampleWithoutReplacement(
+        experimentSequence, 
+        repeatImages
+      );
+
+      // Add repeats with precise 4-image positioning
+      repeatCandidates.forEach(repeatedImage => {
+        // Find positions where we can insert a 4-back repeat
+        const validPositions = experimentSequence.length - nBack;
+        
+        // Randomly choose an insertion point
+        const insertIndex = Math.floor(Math.random() * validPositions);
+
+        // Insert the repeated image exactly 4 images after its original position
+        experimentSequence.splice(insertIndex + nBack, 0, repeatedImage);
+      });
+
+      // Verification logging
+      const actualRepeats = experimentSequence.filter((image, index) => 
+        index >= nBack && 
+        image === experimentSequence[index - nBack]
+      ).length;
+
+      console.log(`Expected repeats: ${repeatImages}, Actual repeats: ${actualRepeats}`);
+
+      return experimentSequence;
+    }
+
+  // URL fetching JSON file containing experimental stimuli (images & metadata)
+  var gist_url = 'https://raw.githubusercontent.com/SyeinW/cogs119_testrepo/patch-1/stimuli_pairs.json';
+
+  // N-Back Experiment Configuration
+    const TOTAL_IMAGES = 10;
+    const REPEAT_IMAGES = 5;
+    const N_BACK = 4;
+    const FIXATION_DURATION = 5;
+    const IMAGE_DURATION = 200;
+
+  // Fetch stimuli data & configure experiment
+  fetch(gist_url)
+    .then(response => response.json())
+    .then(data => {
+
+      // Extract all image paths from data for preloading
+      let image_list = [];
+      data.forEach(item => {
+        image_list.push(item.image1, item.image2);
+      });
+
+      // Preload images 
+      timeline.push({
+        type: jsPsychPreload,
+        images: image_list
+      });
+
+      const experimentSequence = generateNBackSequence(
+        data,
+        TOTAL_IMAGES,
+        REPEAT_IMAGES,
+        N_BACK
+      );
+
+      // Randomizing image order
+      var count = 0
+      var shuffled_images = jsPsych.randomization.shuffle(data);
+      // stores images used in current round of studying
+      // If we are separating by each session move this into for loop
+      // iterate through each picture and add them to the study session and testing session
+      shuffled_images.forEach(item => {
+        
+        // Add fixation cross and memory image display for each image in memory phase
+        timeline.push({
+          type: jsPsychHtmlKeyboardResponse,
+          stimulus: '<div style="font-size:60px;">+</div>', // Fixation cross
+          choices: "NO_KEYS",
+          trial_duration: FIXATION_DURATION,
+        });
+          
+        // counterbalancing strategy. 50% for image 1 of the image set to be chosen and 50% for image 2 of the image set to be chosen
+        var counterbalancing;
+        if (Math.random() < .5) {
+          counterbalancing = item.image1;
+        } else {
+          counterbalancing = item.image2;
+        }
+
+        timeline.push({
+          type: jsPsychImageKeyboardResponse,
+          stimulus: counterbalancing, // Displaying memory image
+          choices: "NO_KEYS",
+          trial_duration: IMAGE_DURATION,
+        });
+
+        count++;
+        if (count > 50) {
+          timeline.push({
+            type: jsPsychHtmlButtonResponse,
+            stimulus: "Are you still there?",
+            choices: ["Yes", "No"],
+          });
+          count = 0;
+        }
+      });
+
+      // Running experiment with configured timeline
+      jsPsych.run(timeline);
+    });
+
+</script>
+
+</html>
