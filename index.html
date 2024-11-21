@@ -77,7 +77,7 @@
     .then(response => response.json())
     .then(data => {
       // Define experimental conditions: 'exemplar', and 'state'
-      const conditions = ['exemplar', 'state'];
+      // const conditions = ['exemplar', 'state']; DEPRECATED
 
       // Extract all image paths from data for preloading
       let image_list = [];
@@ -91,121 +91,124 @@
         images: image_list
       });
 
-      // Iterate through each condition to define memory and test phases
-      conditions.forEach((condition, index) => {
-        // Filter images for memory phase based on the current condition
-        var memory_images = data.filter(item => item.condition.toLowerCase() === condition && item.role === "memory");
-
+      // Randomizing image order
+      var shuffled_images = jsPsych.randomization.shuffle(data);
+      // stores images used in current round of studying
+      // If we are separating by each session move this into for loop
+      var memory_images [];
+      // iterate through each picture and add them to the study session and testing session
+      for (var i = 0; i < 4; i++) {
+        // Take 1/4th of the images and puts them into the current study period
+        var current_group = jsPsych.randomization.sampleWithoutReplacement(shuffled_images, 36);
+        memory_images.push(current_study_period);
+        // Removes images in this study period from the main image set, that way they don't reappear later
+        // TEST THIS, not sure it will work
+        memory_images.forEach(item => {
+          // indexOf will return -1 if the item isn't found and the index number if it is
+          var index = shuffled_image.indexOf(item);
+          if (index != -1) {
+            // removes the item from shuffle_images if it is found
+            shuffled_images.splice(index, 1);
+          }
+        }):
+        
         // Add fixation cross and memory image display for each image in memory phase
         memory_images.forEach(item => {
           timeline.push({
             type: jsPsychHtmlKeyboardResponse,
             stimulus: '<div style="font-size:60px;">+</div>', // Fixation cross
             choices: "NO_KEYS",
-            trial_duration: 800,
+            trial_duration: 500,
           });
+          
+          // counterbalancing strategy. 50% for image 1 of the image set to be chosen and 50% for image 2 of the image set to be chosen
+          var counterbalancing;
+          if (Math.random() < .5) {
+            counterbalancing = item.image1;
+          } else {
+            counterbalancing = item.image2;
+          }
 
           timeline.push({
             type: jsPsychImageKeyboardResponse,
-            stimulus: item.image1, // Displaying memory image
+            stimulus: counterbalancing, // Displaying memory image
             choices: "NO_KEYS",
-            trial_duration: 3000,
+            trial_duration: 2000,
           });
         });
 
-        // Filter image pairs for test phase based on current condition
-        var test_pairs = data.filter(item => item.condition.toLowerCase() === condition && item.role === "test");
-
-        // Add test trials (participants choose between two images & rate confidence)
-        test_pairs.forEach(pair => {
-          var shuffledImages = jsPsych.randomization.shuffle([pair.image1, pair.image2]); // Randomize image positions
-
+        // shuffle image list so testing phase isn't just first 10 images shown
+        memory_images = jsPsych.randomization.shuffle(memory_images);
+        var test_image = [];
+        for(var j = 0; j < 10; j++) {
+          test_images.push(memory_images[i]);
+        }
+        test_images.forEach(pair => {
+          var shuffled_test_images = jsPsych.randomization.shuffle([pair.image1, pair.image2]); // Randomize image positions
           timeline.push({
-            type: jsPsychHtmlButtonResponse,
+            type: jsPsychImageButtonResponse,
             stimulus: `
-              <p>Which of these items did you see before?</p>
               <div style="display: flex; justify-content: space-around;">
                 <button class="choice" data-choice="${shuffledImages[0]}" style="width: 200px; height: 200px;">
-                  <img src="${shuffledImages[0]}" style="width: 100%; height: 100%;">
+                  <img src="${shuffled_test_images[0]}" style="width: 100%; height: 100%;">
                 </button>
                 <button class="choice" data-choice="${shuffledImages[1]}" style="width: 200px; height: 200px;">
-                  <img src="${shuffledImages[1]}" style="width: 100%; height: 100%;">
+                  <img src="${shuffled_test_images[1]}" style="width: 100%; height: 100%;">
                 </button>
               </div>
-              <p>How confident are you this is the correct image?</p>
-              <div style="margin-top: 10px;">
-                <button class="confidence" data-confidence="Confident" style="padding: 10px 20px;">Confident</button>
-                <button class="confidence" data-confidence="Not Confident" style="padding: 10px 20px;">Not Confident</button>
-              </div>
-              <div>
-                <button id="continue" disabled style="margin-top: 20px;">Continue</button>
-              </div>
             `,
-            choices: [], // Prevent default button responses (enforce interaction logig)
-            on_load: function () {
-              // Variables tracking participant choices and confidence ratings
-              let chosenImage = null;
-              let confidence = null;
-
-              // References to image choice & confidence rating buttons
-              const choices = document.querySelectorAll('.choice');
-              const confidences = document.querySelectorAll('.confidence');
-              const continueButton = document.getElementById('continue');
-
-              // Adding event listeners to capture participant interactions
-              choices.forEach(choice => {
-                choice.addEventListener('click', function () {
-                  chosenImage = this.getAttribute('data-choice'); // record selected image
-                  choices.forEach(c => c.style.border = 'none'); // reset borders
-                  this.style.border = '2px solid blue'; // highlight selected choice
-                  checkCompletion(); // checking if both inputs (image selection & confidence rating) are completed
-                });
-              });
-
-              confidences.forEach(conf => {
-                conf.addEventListener('click', function () {
-                  confidence = this.getAttribute('data-confidence'); // record confidence rating
-                  confidences.forEach(c => c.style.border = 'none'); // reset borders
-                  this.style.border = '2px solid blue'; // highlight selected rating
-                  checkCompletion(); // check if both inputs are complete
-                });
-              });
-
-              // enable continue button only after both inputs are selected!
-              const checkCompletion = () => {
-                if (chosenImage && confidence) {
-                  continueButton.disabled = false;
-                }
-              };
-
-              // Finalize trial and save participant's responses when they click "Continue"
-              continueButton.addEventListener('click', function () {
-                jsPsych.finishTrial({
-                  chosen_image: chosenImage,
-                  confidence: confidence
-                });
-              });
-            }
+            choices: ['Image 1', 'Image 2'],
+            prompt: "Which of these items did you see before?",
+            on_finish: function(data) {
+            var choice = data.response;
+            }            
           });
-        });
-
-        // Adding transition check between conditions
-        if (index < conditions.length - 1) {
           timeline.push({
-            type: jsPsychHtmlButtonResponse,
-            stimulus: "Are you still there?",
-            choices: ["Yes", "No"],
-          });
-        }
+            type: jsPsychImageSliderResponse,
+            stimulus: shuffled_test_images[choice],
+            labels: ['Not Confident', 'Confident'],
+            prompt: "<p>How confident are you in your answer choice?</p>",
+            min: 1,
+            max: 5,
+            slider_start: 3,
+            require_movement: true
+          )};
+
+        timeline.push({
+          type: jsPsychHtmlButtonResponse,
+          stimulus: "Are you still there?",
+          choices: ["Yes", "No"],
+        });
       });
 
       // Adding feedback survey at end of experiment
       timeline.push({
         type: jsPsychSurveyText,
         questions: [
-          { prompt: "What do you think this experiment was about?", name: "experiment_purpose", required: true },
-          { prompt: "Did you encounter any technical issues? If yes, please describe them.", name: "technical_issues" }
-        ]
+          {
+            prompt: "What do you think this experiment was about?",
+            name: "experiment_purpose",
+            required: true ,
+            placeholder: "Type your confidence level here...",
+            rows: 3,
+            columns: 50
+          },
+          {
+            prompt: "What details did you use to distinguish the items? Please describe.",
+            placeholder: "Type your response here...",
+            rows: 5,
+            columns: 50
+          },
+          {
+            prompt: "Did you encounter any technical issues? If yes, please describe them.", 
+            name: "technical_issues", 
+            placeholder: "Type your response here...",
+            rows: 5,
+            columns: 50
+          }
+        ],
+        preamble: "<h3>Post-Experiment Survey</h3><p>Please answer the following questions about your experience during the experiment.</p>",
+        button_label: "Submit"
       });
 
       // Final debriefing message (concluding experiment)
