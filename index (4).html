@@ -36,48 +36,6 @@
   // Defining experiment timeline (sequential list of tasks and trials)
   var timeline = [];
 
-  function create4BackSequence(imagePool) {
-    // Constants for our specific requirements
-    const BASE_IMAGES = 150;    // Base unique images
-    const REPEATS = 20;         // Number of 4-back repeats
-    const TOTAL_IMAGES = 170;   // Final sequence length
-
-    // Validate we have enough images
-    if (imagePool.length < BASE_IMAGES) {
-      throw new Error(`Need at least ${BASE_IMAGES} images, but only ${imagePool.length} provided`);
-    }
-
-    // Get initial sequence of 150 unique images
-    const sequence = jsPsych.randomization.sampleWithoutReplacement(imagePool, BASE_IMAGES);
-
-    // Randomly select 20 positions where we will create 4-back repeats
-    // We can only select positions 0 through 145 since we need room for the 4-back
-    const possiblePositions = Array.from({ length: 146 }, (_, i) => i);
-    const selectedPositions = jsPsych.randomization.sampleWithoutReplacement(possiblePositions, REPEATS);
-
-    // Sort positions so we insert from left to right
-    selectedPositions.sort((a, b) => a - b);
-
-    // For each selected position, insert its image again 4 positions later
-    selectedPositions.forEach(position => {
-      const imageToRepeat = sequence[position];
-      sequence.splice(position + 4, 0, imageToRepeat);
-    });
-
-    // Verify the sequence
-    console.log(`Sequence length: ${sequence.length}`);
-    let repeatCount = 0;
-    for (let i = 4; i < sequence.length; i++) {
-      if (sequence[i] === sequence[i - 4]) {
-        repeatCount++;
-        console.log(`4-back match found at positions ${i - 4} and ${i}: ${sequence[i]}`);
-      }
-    }
-    console.log(`Total 4-back repeats: ${repeatCount}`);
-
-    return sequence;
-  }
-
   // URL fetching JSON file containing experimental stimuli (images & metadata)
   var gist_url = 'https://raw.githubusercontent.com/SyeinW/cogs119_testrepo/patch-1/stimuli_pairs.json';
 
@@ -98,11 +56,51 @@
         images: image_list
       });
 
-      const experimentSequence = create4BackSequence(image_list);
-
       // Randomizing image order
       var count = 0
       var shuffled_images = jsPsych.randomization.shuffle(data);
+
+      function create4BackSequence(imagePool) {
+        // Constants for our specific requirements
+        const BASE_IMAGES = 150;    // Base unique images
+        const REPEATS = 20;         // Number of 4-back repeats
+        const TOTAL_IMAGES = 170;   // Final sequence length
+
+        // Validate we have enough images
+        if (imagePool.length < BASE_IMAGES) {
+          throw new Error(`Need at least ${BASE_IMAGES} images, but only ${imagePool.length} provided`);
+        }
+
+        // Randomly select 20 positions where we will create 4-back repeats
+        // We can only select positions 0 through 145 since we need room for the 4-back
+        const possiblePositions = Array.from({ length: 146 }, (_, i) => i);
+        const selectedPositions = jsPsych.randomization.sampleWithoutReplacement(possiblePositions, REPEATS);
+
+        // Sort positions so we insert from left to right
+        selectedPositions.sort((a, b) => a - b);
+
+        // For each selected position, insert its image again 4 positions later
+        selectedPositions.forEach(position => {
+          const imageToRepeat = shuffled_images[position];
+          shuffled_images.splice(position + 4, 0, imageToRepeat);
+        });
+
+        // Verify the sequence
+        console.log(`Sequence length: ${shuffled_images.length}`);
+        let repeatCount = 0;
+        for (let i = 4; i < shuffled_images.length - 4; i++) {
+          if (shuffled_images[i] === shuffled_images[i - 4]) {
+            repeatCount++;
+            console.log(`4-back match found at positions ${i - 4} and ${i}: ${shuffled_images[i]}`);
+          }
+        }
+        console.log(`Total 4-back repeats: ${repeatCount}`);
+
+        return shuffled_images;
+      }
+
+      const experimentSequence = create4BackSequence(image_list);
+
       // stores images used in current round of studying
       // If we are separating by each session move this into for loop
       // iterate through each picture and add them to the study session and testing session
