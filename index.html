@@ -93,6 +93,7 @@
       // Randomizing image order
       var count = 0
       var shuffled_images = jsPsych.randomization.shuffle(data);
+      memory_images = [];
       // stores images used in current round of studying
       // If we are separating by each session move this into for loop
       // iterate through each picture and add them to the study session and testing session
@@ -113,12 +114,13 @@
         } else {
           counterbalancing = item.image2;
         }
-
+        memory_images.push(counterbalancing);
         timeline.push({
           type: jsPsychImageKeyboardResponse,
           stimulus: counterbalancing, // Displaying memory image
           choices: "NO_KEYS",
           trial_duration: 2000,
+          data: {trial_phase: "Memory"},
         });
         count++;
         if (count > 50) {
@@ -126,6 +128,7 @@
             type: jsPsychHtmlButtonResponse,
             stimulus: "Are you still there?",
             choices: ["Yes", "No"],
+            data: {trial_phase: "Attention Check"},
           });
           count = 0;
         }
@@ -141,6 +144,12 @@
 
       test_images.forEach(pair => {
         var shuffled_test_images = jsPsych.randomization.shuffle([pair.image1, pair.image2]); // Randomize image positions
+        var c_image;
+        if (memory_images.includes(pair.image1)) {
+          c_image = pair.image1;
+        } else if (memory_images.includes(pair.image2)){
+          c_image = pair.image2
+        }
         timeline.push({
           type: jsPsychHtmlButtonResponse,
           stimulus: "Which of these items did you see before?",
@@ -148,9 +157,11 @@
             `<img src="${shuffled_test_images[0]}" style="width:200px;height:200px;">`,
             `<img src="${shuffled_test_images[1]}" style="width:200px;height:200px;">`
           ],
-           on_finish: function (data) {
-            data.choice = shuffled_test_images[data.response];
-           }   
+          data: {trial_phase: "Test", choice_images: shuffled_test_images, correct_image: c_image},
+          on_finish: function (data) {
+          data.choice = shuffled_test_images[data.response];
+          data.correct = data.choice === data.correct_image;
+          }   
          });
         timeline.push({
           type: jsPsychImageSliderResponse,
