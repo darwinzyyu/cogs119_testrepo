@@ -1,0 +1,107 @@
+[
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Eship1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Eship2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Etrophy1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Etrophy2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Etrain1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Etrain2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Epeppers1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Epeppers2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Eglobe1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Eglobe2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Ecandy1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Ecandy2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Ecabinet1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Ecabinet2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Efeather1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Efeather2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Eframe1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Eframe2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Echocolatebar1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Echocolatebar2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Efan1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Efan2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Econe1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Econe2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Ehoe1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Ehoe2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Etoywrench1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Etoywrench2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Ebasket1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Ebasket2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Ecamera1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Ecamera2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Esharpener1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Esharpener2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Enozzle1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Enozzle2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Elog1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\UNUSED-the rest of them\\Elog2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Etrain1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Etrain2.jpg"
+  },
+  {
+    "condition": "EXEMPLAR",
+    "image1": "Stimuli\\EXEMPLAR\\USED\\Echisel1.jpg",
+    "image2": "Stimuli\\EXEMPLAR\\USED\\Echisel2.jpg"
+  }
+]
