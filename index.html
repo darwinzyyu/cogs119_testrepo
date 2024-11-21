@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
   <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.2.1"></script>
   <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-image-slider-response@2.0.0"></script>
   <link href="https://unpkg.com/jspsych@8.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -46,27 +47,22 @@
     stimulus: "Welcome to the experiment. Press any key to continue."
   };
 
-  // add the welcome trial to the timeline variable
   timeline.push(welcome);
 
-  // Tell the participants how the experiment will work
   var instructions = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
-  <p>You will be shown X images in a series</p>
-  <p>After you see all the images, you will be shown pairs of images.</p>
-  <p>Select the image you think you saw during the intial stream of images</p>
-  <p>Press any key to begin.</p>
-  `
+    <p>You will be shown X images in a series</p>
+    <p>After you see all the images, you will be shown pairs of images.</p>
+    <p>Select the image you think you saw during the intial stream of images</p>
+    <p>After each choice, you'll rate your confidence in your decision</p>
+    <p>Press any key to begin.</p>
+    `
   };
 
-  //add the instructions trial to the timeline
   timeline.push(instructions);
 
   /* create memory list */
-  // create a list of all items to be tested during the memory procedure
-  // TO DO: how can we expand this list to encompass all items?
-  // TO DO: How can we randomize which of the state/ exemplar items are studied?
   var memory_list = [
     "stimuli/STATE/USED/Sabacus1.jpg",
     "stimuli/STATE/USED/Sbabytoy1.JPG",
@@ -75,19 +71,15 @@
     "stimuli/EXEMPLAR/USED/Ebell1.jpg",
     "stimuli/EXEMPLAR/USED/Ebicycle1.jpg"
   ]
-  //shuffle
   var memory_list_shuffled = jsPsych.randomization.shuffle(memory_list);
   console.log(memory_list_shuffled)
 
   /* create test stimulus list */
-  // create a list of images to use at test
-  // TO DO: how can we expand this list to encompass all items?
   var test_list = [
     {
       item_1: "Sabacus1.jpg",
       item_2: "Sabacus2.jpg",
       test_type: "state",
-      // store the stimulus path here, relative to the index.html
       path_to_image: "stimuli/STATE/USED/"
     },
     {
@@ -121,17 +113,13 @@
       path_to_image: "stimuli/EXEMPLAR/USED/"
     }
   ];
-  //shuffle
   var test_list_shuffled = jsPsych.randomization.shuffle(test_list);
   console.log(test_list_shuffled)
 
-  //cycle through memory list using a for loop
+  //cycle through memory list
   for (i = 0; i < memory_list_shuffled.length; i++) {
-
-    //select the current image item
     var current_image = memory_list_shuffled[i];
 
-    //add fixation cross
     var fixation = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: '<div style="font-size:60px;">+</div>',
@@ -141,34 +129,27 @@
 
     timeline.push(fixation);
 
-    // here's how we can construct a simple image trial
-    // TO DO: add repeated trials
-    // what else do we need to add to the trial procedure? What other information should we store? How can we turn this into a complete experiment timeline?
     var trial = {
       type: jsPsychImageKeyboardResponse,
       stimulus: current_image,
-      //make the space bar a response option
       choices: [" "],
-      //the stimulus is shown for 3000 ms
       trial_duration: 3000,
-      //response should not end trial so that we can keep the same consistent presentation timing
       response_ends_trial: false,
       data: {
         trial_phase: "memory"
       }
     }
-    //push the trial to the timeline
     timeline.push(trial);
   }
 
-  //cycle through test list using a for loop
+  //cycle through test list
   for (let i = 0; i < test_list_shuffled.length; i++) {
     var current_item = test_list_shuffled[i];
     var image_1 = current_item["path_to_image"] + current_item["item_1"];
     var image_2 = current_item["path_to_image"] + current_item["item_2"];
     var shuffledImages = jsPsych.randomization.shuffle([image_1, image_2]);
 
-    // Test trial with shuffled images and data tracking for feedback
+    // Test trial with shuffled images
     var test_trial = {
       type: jsPsychHtmlButtonResponse,
       stimulus: "Which of these items did you see before?",
@@ -178,7 +159,7 @@
       ],
       data: {
         choice_images: shuffledImages,
-        correct_image: image_1  // Assuming image_1 is always the correct "old" item
+        correct_image: image_1
       },
       on_finish: function (data) {
         data.choice = data.choice_images[data.response];
@@ -186,40 +167,36 @@
       }
     };
 
-    var feedback = {
-      type: jsPsychHtmlKeyboardResponse,
-      trial_duration: 1000,
+    var confidence_rating = {
+      type: jsPsychImageSliderResponse,
       stimulus: function () {
-        var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
-        return last_trial_correct ? "<p>Correct!</p>" : "<p>Incorrect. Let's try again.</p>";
+        var last_trial = jsPsych.data.get().last(1).values()[0];
+        return last_trial.choice;
       },
-      post_trial_gap: 500,
-      response_ends_trial: false
-    };
-
-    // Repeat trial until correct
-    var repeat_trial = {
-      timeline: [test_trial, feedback],
-      loop_function: function () {
-        var last_trial_correct = jsPsych.data.get().last(2).values()[0].correct;
-        return !last_trial_correct;  // Repeat only if incorrect
+      labels: ['1<br>Not at all confident', '2', '3', '4', '5<br>Very confident'],
+      slider_width: 500,
+      min: 1,
+      max: 5,
+      slider_start: 3,
+      step: 1,
+      prompt: "<p>How confident are you in your choice?</p>",
+      require_movement: true,
+      data: {
+        task: 'confidence_rating'
       }
     };
 
-    // Push only the repeat_trial to the timeline
-    timeline.push(repeat_trial);
+    var trial_procedure = {
+      timeline: [test_trial, confidence_rating]
+    };
+
+    timeline.push(trial_procedure);
   }
 
-  // Post-experiment survey for participant confidence and feedback
+  // Post-experiment survey
   var post_experiment_survey = {
     type: jsPsychSurveyText,
     questions: [
-      {
-        prompt: "How confident are you in your overall performance during the experiment? (e.g., very confident, somewhat confident, not confident)",
-        placeholder: "Type your confidence level here...",
-        rows: 3,
-        columns: 50
-      },
       {
         prompt: "What details did you use to distinguish the items? Please describe.",
         placeholder: "Type your response here...",
@@ -231,19 +208,15 @@
     button_label: "Submit"
   };
 
-  // Add the survey to the timeline
   timeline.push(post_experiment_survey);
 
   var end_experiment = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: "the experiment has ended, press any key to exit. Goodbye!"
+    stimulus: "The experiment has ended, press any key to exit. Goodbye!"
   };
   timeline.push(end_experiment);
 
-
-  /**
-   * Disable full screen 
-   */
+  // Disable full screen 
   timeline.push({
     type: jsPsychFullscreen,
     fullscreen_mode: false
