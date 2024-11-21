@@ -16,8 +16,8 @@
 
 <body></body>
 <script>
-// Initialize jsPsych - setting up experiment global settings
-var jsPsych = initJsPsych({
+  // Initialize jsPsych - setting up experiment global settings
+  var jsPsych = initJsPsych({
     on_finish: function () {
       // Making sure experiment properly terminates (fullscreen exit and notifying participants)
       if (document.fullscreenElement) {
@@ -36,60 +36,50 @@ var jsPsych = initJsPsych({
   // Defining experiment timeline (sequential list of tasks and trials)
   var timeline = [];
 
-  function generateNBackSequence(
-      imagePool, 
-      totalImages, 
-      repeatImages, 
-      nBack
-        ) {
-      // Validate inputs
-      if (totalImages > imagePool.length * 2) {
-        throw new Error(`Not enough images. Requested ${totalImages}, but only ${imagePool.length * 2} available.`);
-      }
+  function create4BackSequence(imagePool) {
+    // Constants for our specific requirements
+    const BASE_IMAGES = 150;    // Base unique images
+    const REPEATS = 20;         // Number of 4-back repeats
+    const TOTAL_IMAGES = 170;   // Final sequence length
 
-      // Create base sequence of unique images
-      const experimentSequence = imagePool
-        .slice(0, totalImages - repeatImages)
-        .map(item => item);
-
-      // Select images to be repeated
-      const repeatCandidates = jsPsych.randomization.sampleWithoutReplacement(
-        experimentSequence, 
-        repeatImages
-      );
-
-      // Add repeats with precise 4-image positioning
-      repeatCandidates.forEach(repeatedImage => {
-        // Find positions where we can insert a 4-back repeat
-        const validPositions = experimentSequence.length - nBack;
-        
-        // Randomly choose an insertion point
-        const insertIndex = Math.floor(Math.random() * validPositions);
-
-        // Insert the repeated image exactly 4 images after its original position
-        experimentSequence.splice(insertIndex + nBack, 0, repeatedImage);
-      });
-
-      // Verification logging
-      const actualRepeats = experimentSequence.filter((image, index) => 
-        index >= nBack && 
-        image === experimentSequence[index - nBack]
-      ).length;
-
-      console.log(`Expected repeats: ${repeatImages}, Actual repeats: ${actualRepeats}`);
-
-      return experimentSequence;
+    // Validate we have enough images
+    if (imagePool.length < BASE_IMAGES) {
+      throw new Error(`Need at least ${BASE_IMAGES} images, but only ${imagePool.length} provided`);
     }
+
+    // Get initial sequence of 150 unique images
+    const sequence = jsPsych.randomization.sampleWithoutReplacement(imagePool, BASE_IMAGES);
+
+    // Randomly select 20 positions where we will create 4-back repeats
+    // We can only select positions 0 through 145 since we need room for the 4-back
+    const possiblePositions = Array.from({ length: 146 }, (_, i) => i);
+    const selectedPositions = jsPsych.randomization.sampleWithoutReplacement(possiblePositions, REPEATS);
+
+    // Sort positions so we insert from left to right
+    selectedPositions.sort((a, b) => a - b);
+
+    // For each selected position, insert its image again 4 positions later
+    selectedPositions.forEach(position => {
+      const imageToRepeat = sequence[position];
+      sequence.splice(position + 4, 0, imageToRepeat);
+    });
+
+    // Verify the sequence
+    console.log(`Sequence length: ${sequence.length}`);
+    let repeatCount = 0;
+    for (let i = 4; i < sequence.length; i++) {
+      if (sequence[i] === sequence[i - 4]) {
+        repeatCount++;
+        console.log(`4-back match found at positions ${i - 4} and ${i}: ${sequence[i]}`);
+      }
+    }
+    console.log(`Total 4-back repeats: ${repeatCount}`);
+
+    return sequence;
+  }
 
   // URL fetching JSON file containing experimental stimuli (images & metadata)
   var gist_url = 'https://raw.githubusercontent.com/SyeinW/cogs119_testrepo/patch-1/stimuli_pairs.json';
-
-  // N-Back Experiment Configuration
-    const TOTAL_IMAGES = 10;
-    const REPEAT_IMAGES = 5;
-    const N_BACK = 4;
-    const FIXATION_DURATION = 5;
-    const IMAGE_DURATION = 200;
 
   // Fetch stimuli data & configure experiment
   fetch(gist_url)
@@ -108,12 +98,7 @@ var jsPsych = initJsPsych({
         images: image_list
       });
 
-      const experimentSequence = generateNBackSequence(
-        data,
-        TOTAL_IMAGES,
-        REPEAT_IMAGES,
-        N_BACK
-      );
+      const experimentSequence = create4BackSequence(image_list);
 
       // Randomizing image order
       var count = 0
@@ -122,15 +107,15 @@ var jsPsych = initJsPsych({
       // If we are separating by each session move this into for loop
       // iterate through each picture and add them to the study session and testing session
       shuffled_images.forEach(item => {
-        
+
         // Add fixation cross and memory image display for each image in memory phase
         timeline.push({
           type: jsPsychHtmlKeyboardResponse,
           stimulus: '<div style="font-size:60px;">+</div>', // Fixation cross
           choices: "NO_KEYS",
-          trial_duration: FIXATION_DURATION,
+          trial_duration: 500,
         });
-          
+
         // counterbalancing strategy. 50% for image 1 of the image set to be chosen and 50% for image 2 of the image set to be chosen
         var counterbalancing;
         if (Math.random() < .5) {
@@ -143,7 +128,7 @@ var jsPsych = initJsPsych({
           type: jsPsychImageKeyboardResponse,
           stimulus: counterbalancing, // Displaying memory image
           choices: "NO_KEYS",
-          trial_duration: IMAGE_DURATION,
+          trial_duration: 500,
         });
 
         count++;
