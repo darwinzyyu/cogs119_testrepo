@@ -91,93 +91,84 @@
       });
 
       // Randomizing image order
+      var count = 0
       var shuffled_images = jsPsych.randomization.shuffle(data);
       // stores images used in current round of studying
       // If we are separating by each session move this into for loop
       // iterate through each picture and add them to the study session and testing session
-      for (var i = 0; i < 4; i++) {
-        // Take 1/4th of the images and puts them into the current study period
-        var memory_images = jsPsych.randomization.sampleWithoutReplacement(shuffled_images, 12);
-        
-        // Removes images in this study period from the main image set, that way they don't reappear later
-        // TEST THIS, not sure it will work
-        memory_images.forEach(item => {
-          // indexOf will return -1 if the item isn't found and the index number if it is
-          var index = shuffled_images.indexOf(item);
-          if (index != -1) {
-            // removes the item from shuffle_images if it is found
-            shuffled_images.splice(index, 1);
-          }
-        });
+      shuffled_images.forEach(item => {
         
         // Add fixation cross and memory image display for each image in memory phase
-        memory_images.forEach(item => {
-          timeline.push({
-            type: jsPsychHtmlKeyboardResponse,
-            stimulus: '<div style="font-size:60px;">+</div>', // Fixation cross
-            choices: "NO_KEYS",
-            trial_duration: 500,
-          });
-          
-          // counterbalancing strategy. 50% for image 1 of the image set to be chosen and 50% for image 2 of the image set to be chosen
-          var counterbalancing;
-          if (Math.random() < .5) {
-            counterbalancing = item.image1;
-          } else {
-            counterbalancing = item.image2;
-          }
-
-          timeline.push({
-            type: jsPsychImageKeyboardResponse,
-            stimulus: counterbalancing, // Displaying memory image
-            choices: "NO_KEYS",
-            trial_duration: 2000,
-          });
+        timeline.push({
+          type: jsPsychHtmlKeyboardResponse,
+          stimulus: '<div style="font-size:60px;">+</div>', // Fixation cross
+          choices: "NO_KEYS",
+          trial_duration: 500,
         });
-
-        // shuffle image list so testing phase isn't just first 10 images shown
-        memory_images = jsPsych.randomization.shuffle(memory_images);
-        var test_images = [];
-        
-        for(var j = 0; j < 10; j++) {
-          test_images.push(memory_images[j]);
+          
+        // counterbalancing strategy. 50% for image 1 of the image set to be chosen and 50% for image 2 of the image set to be chosen
+        var counterbalancing;
+        if (Math.random() < .5) {
+          counterbalancing = item.image1;
+        } else {
+          counterbalancing = item.image2;
         }
 
-        test_images.forEach(pair => {
-          var shuffled_test_images = jsPsych.randomization.shuffle([pair.image1, pair.image2]); // Randomize image positions
+        timeline.push({
+          type: jsPsychImageKeyboardResponse,
+          stimulus: counterbalancing, // Displaying memory image
+          choices: "NO_KEYS",
+          trial_duration: 2000,
+        });
+        count++;
+        if (count > 50) {
           timeline.push({
             type: jsPsychHtmlButtonResponse,
-            stimulus: "Which of these items did you see before?",
-            choices: [
-              `<img src="${shuffled_test_images[0]}" style="width:200px;height:200px;">`,
-              `<img src="${shuffled_test_images[1]}" style="width:200px;height:200px;">`
-            ],
-            on_finish: function (data) {
-              data.choice = shuffled_test_images[data.response];
-            }   
+            stimulus: "Are you still there?",
+            choices: ["Yes", "No"],
           });
+          count = 0;
+        }
+      });
+      var test_images = [];
 
-          timeline.push({
-            type: jsPsychImageSliderResponse,
-            stimulus: function () {
-              var last_trial = jsPsych.data.get().last(1).values()[0];
-              return last_trial.choice;
-            },
-            labels: ['1<br>Not at all confident', '2', '3', '4', '5<br>Very confident'],
-            prompt: "<p>How confident are you in your answer choice?</p>",
-            min: 1,
-            max: 5,
-            slider_start: 3,
-            require_movement: true,
-          });
-        });
+      // randomize which images end up in test_images
+      shuffled_images = jsPsych.randomization.shuffle(shuffled_images);  
 
+      for(var j = 0; j < 50; j++) {
+        test_images.push(shuffled_images[j]);
+      }
+
+      test_images.forEach(pair => {
+        var shuffled_test_images = jsPsych.randomization.shuffle([pair.image1, pair.image2]); // Randomize image positions
         timeline.push({
           type: jsPsychHtmlButtonResponse,
-          stimulus: "Are you still there?",
-          choices: ["Yes", "No"],
+          stimulus: "Which of these items did you see before?",
+          choices: [
+            `<img src="${shuffled_test_images[0]}" style="width:200px;height:200px;">`,
+            `<img src="${shuffled_test_images[1]}" style="width:200px;height:200px;">`
+          ],
+           on_finish: function (data) {
+            data.choice = shuffled_test_images[data.response];
+           }   
+         });
+        timeline.push({
+          type: jsPsychImageSliderResponse,
+          stimulus: function () {
+          var last_trial = jsPsych.data.get().last(1).values()[0];
+          return last_trial.choice;
+          },
+          labels: ['1<br>Not at all confident', '2', '3', '4', '5<br>Very confident'],
+          prompt: "<p>How confident are you in your answer choice?</p>",
+          min: 1,
+          max: 5,
+          slider_start: 3,
+          require_movement: true,
         });
-      }
+      });
+
+
+
       
 
       // Adding feedback survey at end of experiment
